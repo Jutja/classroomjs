@@ -1,0 +1,77 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Classroomjs for GitHub</title>
+  <link rel="stylesheet" media="all" href="/css/home.css">
+  <link rel="stylesheet" href="/vendor/bower_components/octicons/octicons/octicons.css">
+</head>
+<body class="site pages home">
+  <main>
+  <header class="site-header">
+    <div class="container">
+      <a href="/"><img class="site-logo" alt="GitHub for Classrooms" src="/images/logo@2x.png"></a>
+      <nav class="site-nav">
+        <ul>
+          <li>
+            <a target="_blank" href="https://education.github.com">GitHub Education</a>
+          </li>
+          <li><a href="/login">Sign in</a></li>
+        </ul>
+      </nav>
+    </div></header>
+    <div class="site-content">
+      <div class="container">
+        
+        <div class="site-content">
+          <div class="site-content-cap">
+            <h2 class="site-content-heading">
+            <span class="assignment-icon assignment-icon-individual">
+              <span class="octicon octicon-person"></span>
+            </span>
+            Assignment settings
+            </h2>
+          </div>
+        </div>
+        <div class="site-content-body">
+          <form class="edit_assignment" id="edit_assignment_609" action="/classrooms/11042439-demo101/assignments/assignmentname" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="auth-token">
+          <div class="columns">
+            <div class="two-thirds column">
+              
+              <dl class="form">
+                <dt><label for="assignment_title">Your assignment</label></dt>
+                <dd><input class="textfield" type="text" value="assignment101" name="assignment[title]" id="assignment_title"></dd>
+              </dl>
+              <dl class="form">
+                <div class="form-checkbox">
+                  <label><input type="radio" value="true" checked="checked" name="assignment[public_repo]" id="assignment_public_repo_true"> Public</label>
+                  <span class="mega-octicon octicon-repo"></span>
+                  <span class="note">Submit assignments using public repositories. All submissions will be visible to the world.</span>
+                </div>
+                <div class="form-checkbox">
+                  <label><input type="radio" value="false" name="assignment[public_repo]" id="assignment_public_repo_false"> Private</label>
+                  <span class="mega-octicon octicon-lock"></span>
+                  <span class="note">Submit assignments using private repositories. Submissions will only be visible to the submitter and organization owners.</span>
+                </div>
+              </dl>
+              <dl class="form">
+                <dt><label>Add your starter code from GitHub <small>(optional)</small> </label></dt>
+                <dd><input class="textfield" type="text" name="repo_name" value="" placeholder="e.g. education/classroom" <="" dd="">
+              </dd></dl>
+            </div>
+            <div class="one-third column dangerzone-container">
+              <p class="text-emphasized">Delete this assignment</p>
+              <p class="text-muted">Once you delete this assignment, there is no going back. Please be certain.</p>
+              <a data-remodal-target="delete-assignment" class="btn btn-danger btn-block">Delete this assignment</a>
+            </div>
+          </div>
+          <div class="form-actions">
+            <input type="submit" name="commit" value="Save changes" class="btn btn-green js-navigation">
+            <a class="btn" role="button" href="/organizations/classrooms-name/assignments/assignment-name">Cancel</a>
+          </div>
+        </form></div>
+      </div>
+    </div>
+    </main>
+    
+  </body></html>
