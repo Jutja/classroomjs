@@ -1,5 +1,6 @@
            <% if ( messages.errors ) { %>
-  <div class="alert alert-danger" role="alert">
+  <div class="flash" role="alert">
+  <span class="octicon octicon-x flash-close js-flash-close"></span>
     <% for(var i =0; i < messages.errors.length; i++){ %>
     <p><%= messages.errors[i].msg %> </p>
     <% } %>
@@ -7,14 +8,16 @@
 <% } %>
 
 <% if ( messages.info ) { %>
-  <div class="alert alert-warning" role="alert">
+  <div class="flash" role="alert">
+  <span class="octicon octicon-x flash-close js-flash-close"></span>
     <% for(var i =0; i < messages.info.length; i++){ %>
     <p><%= messages.info[i].msg %> </p>
     <% } %>
   </div>
 <% } %>
 <% if ( messages.success ) { %>
-  <div class="alert alert-success" role="alert">
+  <div class="flash" role="alert">
+  <span class="octicon octicon-x flash-close js-flash-close"></span>
     <% for(var i =0; i < messages.success.length; i++){ %>
     <p><%= messages.success[i].msg %> </p>
     <% } %>
