@@ -22,6 +22,21 @@ exports.getClassrooms = function(req, res, next) {
       title: 'GitHub API',
       repo: body
     });
-    console.log(body); //json object
   });
+};
+
+/**
+ * GET /classroom/new
+ * Add a Classroom.
+ */
+exports.newClassroom = function(req, res, next) {
+    res.render('git/add_classroom');
+};
+
+/**
+ * POST /classroom/new
+ * Add a Classroom.
+ */
+exports.createClassroom = function(req, res, next) {
+    res.render('git/add_classroom');
 };
