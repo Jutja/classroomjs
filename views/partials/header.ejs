@@ -1,0 +1,47 @@
+<%  if (!user){%>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/"><img class="site-logo" alt="GitHub for Classrooms" src="/images/logo@2x.png"></a>
+
+    <nav class="site-nav">
+      <ul>
+        <li>
+          <a target="_blank" href="https://education.github.com">GitHub Education</a>
+        </li>
+
+          <li><a href="/login">Sign in</a></li>
+      </ul>
+    </nav>
+  </div></header>
+  <%} else {%>
+<header class="site-header">
+  <div class="container">
+    <a href="/"><img class="site-logo" alt="GitHub for Classrooms" src="/images/logo@2x.png"></a>
+
+    <nav class="site-nav">
+      <ul>
+        <li>
+          <a target="_blank" href="https://education.github.com">GitHub Education</a>
+        </li>
+
+          <li>
+            <a class="tooltipped tooltipped-s" aria-label="Report an issue" href="https://github.com/education/classroom/issues/new?labels[]=report">
+              <span class="octicon octicon-bug"></span>
+</a>          </li>
+
+          <li>
+            <a class="tooltipped tooltipped-s" aria-label="View GitHub profile" href="https://github.com/bhanuc">
+              <img class="avatar" alt="@bhanuc" height="20" width="20" src="https://avatars.githubusercontent.com/u/2958857?v=3&amp;size=40">
+</a>          </li>
+
+          <li>
+            <a class="tooltipped tooltipped-s" aria-label="Sign out" rel="nofollow" data-method="post" href="/logout">
+              <span class="octicon octicon-sign-out"></span>
+</a>          </li>
+
+      </ul>
+    </nav>
+  </div></header>
+
+  <%}%>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Classroomjs | Profile</title>
+    
+        <link rel="stylesheet" media="all" href="/css/home.css">
+            <link rel="stylesheet" href="/vendor/bower_components/octicons/octicons/octicons.css">
+
+    <body>
+          <%- include ../partials/header.ejs %>
+          <%- include ../partials/flash.ejs %>
+        
+            <section id="content">
+                <div class="container">
+                    
+                    <div class="block-header">
+                        <h2><%=user.profile.name%> <small><%=user.email%></small></h2>
+                    </div>
+                    
+                    <div class="card" id="profile-main">
+                        <div class="pm-overview c-overflow">
+                            <div class="pmo-pic">
+                                <div class="p-relative">
+                                    <% if(user.profile.picture) { %>
+                                        <img class="img-responsive" src="<%=user.profile.picture%>" alt=""> 
+                                    <% } %>
+                                </div>
+                                <div class="pmo-stat">
+                                    <% if(user.profile.name) { %>
+                                    <h2 class="m-0 c-white"><%=user.profile.name%></h2>
+                                <% }else{ %>
+                                    <h2 class="m-0 c-white"><%=user.email%></h2>
+                                <% } %>
+                                <h6 class="c-white">User ID:&nbsp<%=user._id%></h6>
+                                </div>
+                            </div>
+                            
+                            <div class="pmo-block pmo-contact hidden-xs">
+                                <h2>Contact</h2>
+                                
+                                <ul>
+                                    <li><i class="md md-phone"></i> <%=user.profile.phone%></li>
+                                    <li><i class="md md-email"></i> <%=user.email%></li>
+                                    <li><i class="md md-location-on"></i> <%=user.profile.location%></li>
+                                </ul>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        <div class="pm-body clearfix">
+                            <ul class="tab-nav tn-justified">
+                                <li class="active waves-effect"><a href="/account_">About</a></li>
+                                <li class="waves-effect"><a href="/account_/update">Update Profile</a></li>
+                                <li class="waves-effect"><a href="/account_/change_password">Change Password</a></li>
+                            </ul>
+                            
+                           <div class="pmb-block">
+                                <div class="pmbb-header">
+                                    <h4>Completing your account details makes it easier for buyers to find you !</h4><dd>So kindly keep it updated...</dd>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="pmb-block">
+                                <div class="pmbb-header">
+                                    <h2><i class="md md-person m-r-5"></i> Basic Information</h2>
+                                </div>
+                                <div class="pmbb-body p-l-30">
+                                    <div class="pmbb-view">
+                                        <dl class="dl-horizontal">
+                                            <dt>Full Name</dt>
+                                            <dd><%=user.profile.name%></dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>Gender</dt>
+                                            <dd><%=user.profile.gender%></dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>User Type</dt>
+                                            <dd><%=user.profile.typec%></dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>About Company</dt>
+                                            <dd><%=user.profile.about_company%></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                        
+                            <div class="pmb-block">
+                                <div class="pmbb-header">
+                                    <h2><i class="md md-phone m-r-5"></i> Contact Information</h2>
+                                </div>
+                                <div class="pmbb-body p-l-30">
+                                    <div class="pmbb-view">
+                                        <dl class="dl-horizontal">
+                                            <dt>Mobile Phone</dt>
+                                            <dd><%=user.profile.phone%></dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>Email Address</dt>
+                                            <dd><%=user.email%></dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>Website</dt>
+                                            <dd><%=user.profile.website%></dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>City</dt>
+                                            <dd><%=user.profile.city%></dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>State</dt>
+                                            <dd><%=user.profile.state%></dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>Address</dt>
+                                            <dd><%=user.profile.location%></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+       
+
+          <%- include ../partials/footer.ejs %>
+    
+    
+    </body>
+</html>

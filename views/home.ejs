@@ -1,0 +1,68 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Classroomjs for GitHub</title>
+
+    <link rel="stylesheet" media="all" href="/css/home.css">
+    <link rel="stylesheet" href="/vendor/bower_components/octicons/octicons/octicons.css">
+</head>
+  <body class="site pages home">
+
+    <main>
+          <%- include ./partials/header.ejs %>
+
+      <div class="signin-section">
+  <div class="container text-center">
+    <ul>
+      <li><span class="mega-octicon octicon-book"></span></li>
+      <li><span class="mega-octicon octicon-pencil"></span></li>
+      <li><span class="mega-octicon octicon-mortar-board"></span></li>
+      <li><span class="mega-octicon octicon-organization"></span></li>
+      <li><span class="mega-octicon octicon-calendar"></span></li>
+      <li><span class="mega-octicon octicon-comment-discussion"></span></li>
+    </ul>
+
+    <h1 class="heading">Your course assignments on GitHub</h1>
+    <p class="subheading">Classroomjs for GitHub automates repository creation and access control, making it easy to distribute starter code and collect assignments on GitHub.</p>
+
+    <a class="btn btn-big-mobile-friendly btn-blue" href="/auth/github">Sign in with your GitHub account to get started</a>
+  </div>
+</div>
+
+<div class="information-section">
+  <div class="container">
+    <div class="columns">
+      <div class="one-third column">
+        <h2><span class="mega-octicon octicon-repo"></span> Create assignments</h2>
+        <p>
+          Distribute assignments with starter code. Students work on assignments individually or in groups using public or private GitHub repositories.
+        </p>
+      </div>
+
+      <div class="one-third column">
+        <h2><span class="mega-octicon octicon-organization"></span> Invite students</h2>
+        <p>
+          Students gain access to assignments using unique invitation URLs, eliminating the need to collect GitHub usernames in advance and manage access manually.
+        </p>
+      </div>
+
+      <div class="one-third column">
+        <h2><span class="mega-octicon octicon-graph"></span> Review progress</h2>
+        <p>
+          Teachers and teaching assistants can browse submissions by assignment, making it easy to follow along with student progress.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </main>
+
+          <%- include ./partials/footer.ejs %>
+
+  
+
+</body></html>
