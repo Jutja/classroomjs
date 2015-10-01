@@ -112,9 +112,11 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
  * Git Routes routes.
  */
 
-app.get('/classroom', passportConf.isAuthenticated, gitController.getClassrooms);
-app.get('/classroom/new', passportConf.isAuthenticated, gitController.newClassroom);
-app.post('/classroom/new', passportConf.isAuthenticated, gitController.createClassroom);
+app.get('/classrooms', passportConf.isAuthenticated, gitController.getClassrooms);
+app.get('/classrooms/new', passportConf.isAuthenticated, gitController.newClassroom);
+app.get('/classroom/:title', passportConf.isAuthenticated, gitController.showClassroom);
+app.post('/classrooms/new', passportConf.isAuthenticated, gitController.createClassroom);
+app.get('/classroom/:title/new-assignment', passportConf.isAuthenticated, gitController.newAssignment);
 
  
 app.get('/auth/github', passport.authenticate('github'));

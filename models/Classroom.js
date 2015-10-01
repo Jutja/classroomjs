@@ -12,6 +12,7 @@ var classroomSchema = new mongoose.Schema({
 	admins: Array,
 	moderators: Array,
 	users: Array,
+	assignments: Array,
 	nia: {
 		type: Number,
 		default: 0

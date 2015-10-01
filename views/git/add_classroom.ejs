@@ -28,7 +28,7 @@
           </div>
                     <%- include ../partials/flash.ejs %>
           <div class="site-content-body">
-            <form class="new_organization" id="new_organization" action="/classroom/new" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_csrf" value="<%=_csrf%>">
+            <form class="new_organization" id="new_organization" action="/classrooms/new" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_csrf" value="<%=_csrf%>">
             
             <dl class="form">
               <dt><label for="organization_title">Title</label></dt>
@@ -40,7 +40,7 @@
               <select class="select" name="organization[github_id]" id="organization_github_id">
                 <% for(var i=0; i< organ.length; i++) {%>
                 <%= organ[i].id%>
-                <option value="<%= organ[i].id%>, <%= organ[i].login%>"><%= organ[i].login%></option>
+                <option value="<%= organ[i].id%>,<%= organ[i].login%>"><%= organ[i].login%></option>
                 <% } %>
               </select>
               </dd>

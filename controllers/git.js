@@ -9,18 +9,18 @@ var Classroom = require('../models/Classroom');
 
 
 /**
- * GET /classroom
+ * GET /classrooms
  * Main homepage.
  */
 exports.getClassrooms = function(req, res, next) {
   Classroom.find({}, function(err, existingClassroom) {
     if (err) {
-        req.flash('errors', {
-          msg: 'There was a error with the database.'
-        });
-        return res.redirect('/classroom');
+      req.flash('errors', {
+        msg: 'There was a error with the database.'
+      });
+      return res.redirect('/classrooms');
     } else {
-      res.render('git/classroom', {
+      res.render('git/classrooms', {
         classrooms: existingClassroom
       });
     }
@@ -28,7 +28,64 @@ exports.getClassrooms = function(req, res, next) {
 };
 
 /**
- * GET /classroom/new
+ * GET /classroom/:title
+ * Main homepage.
+ */
+exports.showClassroom = function(req, res, next) {
+  var title = req.params.title;
+  if (title) {
+    Classroom.findOne({
+      title: title
+    }, function(err, classroom) {
+      if (err) {
+        req.flash('errors', {
+          msg: 'There was a error with the database.'
+        });
+        return res.redirect('/classrooms');
+      } else {
+        console.log(classroom)
+        res.render('git/assignments', {
+          classroom: classroom
+        });
+      }
+    })
+  } else {
+    res.send({status: '404, not found'})
+  }
+};
+
+
+/**
+ * GET /classroom/:title/new-assignment
+ * Main homepage.
+ */
+exports.newAssignment = function(req, res, next) {
+  var title = req.params.title;
+  if (title) {
+    Classroom.findOne({
+      title: title
+    }, function(err, classroom) {
+      if (err) {
+        req.flash('errors', {
+          msg: 'There was a error with the database.'
+        });
+        return res.redirect('/classrooms');
+      } else {
+        console.log(classroom)
+        res.render('git/new_assignments', {
+          classroom: classroom
+        });
+      }
+    })
+  } else {
+    res.send({status: '404, not found'})
+  }
+};
+
+
+
+/**
+ * GET /classrooms/new
  * Add a Classroom.
  */
 exports.newClassroom = function(req, res, next) {
@@ -50,7 +107,7 @@ exports.newClassroom = function(req, res, next) {
 };
 
 /**
- * POST /classroom/new
+ * POST /classrooms/new
  * Add a Classroom.
  */
 exports.createClassroom = function(req, res, next) {
@@ -66,7 +123,7 @@ exports.createClassroom = function(req, res, next) {
         req.flash('errors', {
           msg: 'Classroom with that name already exists.'
         });
-        return res.redirect('/classroom/new');
+        return res.redirect('/classrooms/new');
       } else {
         var classroom = new Classroom({
           title: organization.title,
@@ -75,7 +132,7 @@ exports.createClassroom = function(req, res, next) {
           updated_at: date,
           deleted_at: date,
           admins: [req.user._id],
-          org_name : gid_name[1]
+          org_name: gid_name[1]
         });
 
         classroom.save(function(err) {
