@@ -26,6 +26,7 @@
           <div class="site-content-cap">
             <h2 class="site-content-heading">New Classroom</h2>
           </div>
+                    <%- include ../partials/flash.ejs %>
           <div class="site-content-body">
             <form class="new_organization" id="new_organization" action="/classroom/new" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_csrf" value="<%=_csrf%>">
             

@@ -5,6 +5,7 @@ var async = require('async');
 var request = require('request');
 var github = require('octonode');
 var _ = require('lodash');
+var Classroom = require('../models/Classroom');
 
 
 /**
@@ -51,10 +52,38 @@ exports.newClassroom = function(req, res, next) {
  * Add a Classroom.
  */
 exports.createClassroom = function(req, res, next) {
-  req.assert('email', 'Email is not valid').isEmail();
-  req.assert('password', 'Password cannot be blank').notEmpty();
+  req.assert('organization', 'Organization cannot be blank').notEmpty();
+  var organization = req.body.organization;
+  if (organization.title && organization.github_id) {
+    var date = new Date();
+    var classroom = new Classroom({
+      title: req.body.title,
+      github_id: req.body.github_id,
+      created_at: date,
+      updated_at: date,
+      deleted_at: date,
+      users: [req.user._id]
+    });
 
+    Classroom.findOne({
+      title: req.body.title
+    }, function(err, existingClassroom) {
+      if (existingClassroom) {
+        req.flash('errors', {
+          msg: 'Classroom with that name already exists.'
+        });
+        return res.redirect('/classroom/new');
+      } else {
+        classroom.save(function(err) {
+          if (err) return next(err);
+          res.send(classroom)
+        });
+      }
+    });
+  } else {
+    res.send({
+      status: false
+    });
+  }
 
-
-  res.render('git/add_classroom');
 };
