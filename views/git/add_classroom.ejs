@@ -36,8 +36,12 @@
             <dl class="form">
               <dt><label for="organization_organization">Organization</label></dt>
               <dd>
-              <select class="select" name="organization[github_id]" id="organization_github_id"><option value="organization_id">org1</option>
-              <option value="organization_id">org2</option></select>
+              <select class="select" name="organization[github_id]" id="organization_github_id">
+                <% for(var i=0; i< organ.length; i++) {%>
+                <%= organ[i].id%>
+                <option value="<%= organ[i].id%>"><%= organ[i].login%></option>
+                <% } %>
+              </select>
               </dd>
             </dl>
             <div class="form-actions">

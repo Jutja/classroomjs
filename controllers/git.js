@@ -12,10 +12,9 @@ var _ = require('lodash');
  * Main homepage.
  */
 exports.getClassrooms = function(req, res, next) {
-  var token = _.find(req.user.tokens, {
+  var client = github.client(_.find(req.user.tokens, {
     kind: 'github'
-  });
-  var client = github.client(token.accessToken);
+  }).accessToken);
   client.get('/users/pksunkara', {}, function(err, status, body, headers) {
     if (err) return next(err);
     res.render('git/classroom', {
@@ -30,7 +29,21 @@ exports.getClassrooms = function(req, res, next) {
  * Add a Classroom.
  */
 exports.newClassroom = function(req, res, next) {
-    res.render('git/add_classroom');
+  var client = github.client(_.find(req.user.tokens, {
+    kind: 'github'
+  }).accessToken);
+  var ghme = client.me();
+  ghme.orgs(function(err, organ) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.render('git/add_classroom', {
+        organ: organ
+      });
+    }
+    console.log(err, organ)
+
+  })
 };
 
 /**
@@ -38,5 +51,10 @@ exports.newClassroom = function(req, res, next) {
  * Add a Classroom.
  */
 exports.createClassroom = function(req, res, next) {
-    res.render('git/add_classroom');
+  req.assert('email', 'Email is not valid').isEmail();
+  req.assert('password', 'Password cannot be blank').notEmpty();
+
+
+
+  res.render('git/add_classroom');
 };

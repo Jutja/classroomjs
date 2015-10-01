@@ -27,8 +27,11 @@
 
     <h1 class="heading">Your course assignments on GitHub</h1>
     <p class="subheading">Classroomjs for GitHub automates repository creation and access control, making it easy to distribute starter code and collect assignments on GitHub.</p>
-
+    <%  if (!user){%>
     <a class="btn btn-big-mobile-friendly btn-blue" href="/auth/github">Sign in with your GitHub account to get started</a>
+    <% } else {%>
+    <a class="btn btn-big-mobile-friendly btn-blue" href="/classrooms">Manage your classrooms</a>
+    <%}%>
   </div>
 </div>
 

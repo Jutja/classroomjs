@@ -3,7 +3,7 @@ TODO
                                            Prefix Verb     URI Pattern                                                              Controller#Action
           accept_invitation_assignment_invitation PATCH    /assignment-invitations/:id/accept_invitation(.:format)                  assignment_invitations#accept_invitation
       successful_invitation_assignment_invitation GET      /assignment-invitations/:id/success(.:format)                            assignment_invitations#successful_invitation
-                            assignment_invitation GET      /assignment-invitations/:id(.:format)                                    assignment_invitations#show
+                     xx       assignment_invitation GET      /assignment-invitations/:id(.:format)                                    assignment_invitations#show
                accept_group_assignment_invitation GET      /group-assignment-invitations/:id/accept(.:format)                       group_assignment_invitations#accept
     accept_assignment_group_assignment_invitation PATCH    /group-assignment-invitations/:id/accept_assignment(.:format)            group_assignment_invitations#accept_assignment
     accept_invitation_group_assignment_invitation PATCH    /group-assignment-invitations/:id/accept_invitation(.:format)            group_assignment_invitations#accept_invitation

@@ -3,7 +3,6 @@
  * Home page.
  */
 exports.index = function(req, res) {
-	console.log(req.user)
 	res.render('home', {
 		title: 'Home',
 		user: req.user
