@@ -13,16 +13,18 @@ var Classroom = require('../models/Classroom');
  * Main homepage.
  */
 exports.getClassrooms = function(req, res, next) {
-  var client = github.client(_.find(req.user.tokens, {
-    kind: 'github'
-  }).accessToken);
-  client.get('/users/pksunkara', {}, function(err, status, body, headers) {
-    if (err) return next(err);
-    res.render('git/classroom', {
-      title: 'GitHub API',
-      repo: body
-    });
-  });
+  Classroom.find({}, function(err, existingClassroom) {
+    if (err) {
+        req.flash('errors', {
+          msg: 'There was a error with the database.'
+        });
+        return res.redirect('/classroom');
+    } else {
+      res.render('git/classroom', {
+        classrooms: existingClassroom
+      });
+    }
+  })
 };
 
 /**
@@ -56,17 +58,9 @@ exports.createClassroom = function(req, res, next) {
   var organization = req.body.organization;
   if (organization.title && organization.github_id) {
     var date = new Date();
-    var classroom = new Classroom({
-      title: req.body.title,
-      github_id: req.body.github_id,
-      created_at: date,
-      updated_at: date,
-      deleted_at: date,
-      users: [req.user._id]
-    });
-
+    var gid_name = organization.github_id.split(',')
     Classroom.findOne({
-      title: req.body.title
+      title: organization.title
     }, function(err, existingClassroom) {
       if (existingClassroom) {
         req.flash('errors', {
@@ -74,6 +68,16 @@ exports.createClassroom = function(req, res, next) {
         });
         return res.redirect('/classroom/new');
       } else {
+        var classroom = new Classroom({
+          title: organization.title,
+          github_id: gid_name[0],
+          created_at: date,
+          updated_at: date,
+          deleted_at: date,
+          admins: [req.user._id],
+          org_name : gid_name[1]
+        });
+
         classroom.save(function(err) {
           if (err) return next(err);
           res.send(classroom)

@@ -40,7 +40,7 @@
               <select class="select" name="organization[github_id]" id="organization_github_id">
                 <% for(var i=0; i< organ.length; i++) {%>
                 <%= organ[i].id%>
-                <option value="<%= organ[i].id%>"><%= organ[i].login%></option>
+                <option value="<%= organ[i].id%>, <%= organ[i].login%>"><%= organ[i].login%></option>
                 <% } %>
               </select>
               </dd>

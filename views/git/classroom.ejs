@@ -30,28 +30,35 @@
           </div>
           <div class="site-content-body organization-list-items">
             
+            <% if(classrooms.length){ for(var i=0; i< classrooms.length; i++) {%>
+            <option value="<%= classrooms[i].id%>"><%= classrooms[i].login%></option>
             <div class="flex-table organization-list-item">
               <div class="flex-table-item">
-                <img class="avatar left" height="60" width="60" alt="@Jutja" src="https://avatars.githubusercontent.com/u/11042439?v=3&amp;size=120">
-                <a class="organization-title" href="/classroom/:id">
-                  <strong class="css-truncate-target">Classroom Name</strong>
+                <img class="avatar left" height="60" width="60" alt="@Jutja" src="https://avatars.githubusercontent.com/u/<%= classrooms[i].github_id%>?v=3&amp;size=120">
+                <a class="organization-title" href="/classroom/<%= classrooms[i].id%>">
+                  <strong class="css-truncate-target"><%= classrooms[i].title%></strong>
                 </a>
-                <span class="text-muted css-truncate-target">@organization Name</span>
+                <span class="text-muted css-truncate-target">@<%= classrooms[i].org_name%></span>
               </div>
               <div class="flex-table-item organization-stats text-right">
                 <span class="organization-stat-item text-muted tooltipped tooltipped-s" aria-label="Individual Assignments">
-                  <span class="octicon octicon-person"></span>No. of Individual Assignments
+                  <span class="octicon octicon-person"></span><%= classrooms[i].nia%>
                 </span>
                 <span class="organization-stat-item text-muted tooltipped tooltipped-s" aria-label="Group Assignments">
-                  <span class="octicon octicon-organization"></span>No. of Group Assignments
+                  <span class="octicon octicon-organization"></span><%= classrooms[i].nga%>
                 </span>
               </div>
             </div>
-            
+            <% }} else {%>
+            <span class="octicon octicon-x flash-close js-flash-close"></span>
+            <p> No Classroom has been created yet. </p>
           </div>
+          <% } %>
+          
         </div>
       </div>
     </div>
-    </main>
-    
-  </body></html>
+  </div>
+  </main>
+  
+</body></html>
