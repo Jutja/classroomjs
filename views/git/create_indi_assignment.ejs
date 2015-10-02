@@ -1,0 +1,58 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Classroomjs for GitHub</title>
+  <link rel="stylesheet" media="all" href="/css/home.css">
+  <link rel="stylesheet" href="/vendor/bower_components/octicons/octicons/octicons.css">
+</head>
+<body class="site pages home">
+  <main>
+ <%- include ./partials/header.ejs %>
+  <%- include ./partials/gbanner.ejs %>
+    </div>
+    <div class="site-content">
+      <div class="container">
+        
+        <div class="site-content">
+          <div class="site-content-cap">
+            <h2 class="site-content-heading">
+            <span class="assignment-icon assignment-icon-individual">
+              <span class="octicon octicon-person"></span>
+            </span>
+            New individual assignment
+            </h2>
+          </div>
+        </div>
+        <div class="site-content-body">
+          <form class="new_assignment" id="new_assignment" action="/classroom/<%=classroom.title%>/assignments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_csrf" value="<%=_csrf%>">
+          <dl class="form">
+            <dt><label for="assignment_title">Your assignment</label></dt>
+            <dd><input class="textfield" type="text" name="assignment[title]" id="assignment_title"></dd>
+          </dl>
+          <dl class="form">
+            <div class="form-checkbox">
+              <label><input type="radio" value="true" checked="checked" name="assignment[public_repo]" id="assignment_public_repo_true"> Public</label>
+              <span class="mega-octicon octicon-repo"></span>
+              <span class="note">Submit assignments using public repositories. All submissions will be visible to the world.</span>
+            </div>
+            <div class="form-checkbox">
+              <label><input type="radio" value="false" name="assignment[public_repo]" id="assignment_public_repo_false"> Private</label>
+              <span class="mega-octicon octicon-lock"></span>
+              <span class="note">Submit assignments using private repositories. Submissions will only be visible to the submitter and organization owners.</span>
+            </div>
+          </dl>
+          <dl class="form">
+            <dt><label>Add your starter code from GitHub <small>(optional)</small> </label></dt>
+            <dd><input class="textfield" type="text" name="repo_name" value="" placeholder="e.g. education/classroom" <="" dd="">
+          </dd></dl>
+          <div class="form-actions">
+            <input type="submit" name="commit" value="Create Assignment" class="btn btn-green">
+            <a class="btn" role="button" href="/classroom/11042439-demo101">Cancel</a>
+          </div>
+        </form></div>
+      </div>
+    </div>
+    </main>
+    
+  </body></html>

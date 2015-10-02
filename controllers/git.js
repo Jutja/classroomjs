@@ -21,21 +21,23 @@ exports.getClassrooms = function(req, res, next) {
       return res.redirect('/classrooms');
     } else {
       res.render('git/classrooms', {
-        classrooms: existingClassroom
+        classrooms: existingClassroom,
+        user: req.user
       });
     }
   })
 };
 
 /**
- * GET /classroom/:title
- * Main homepage.
+ * GET /classroom/:slug
+ * Show homepage.
  */
 exports.showClassroom = function(req, res, next) {
-  var title = req.params.title;
-  if (title) {
+  var slug = req.params.slug.split('_');
+  if (slug[0]) {
     Classroom.findOne({
-      title: title
+      title: slug[0],
+      org_name: slug[1]
     }, function(err, classroom) {
       if (err) {
         req.flash('errors', {
@@ -45,25 +47,29 @@ exports.showClassroom = function(req, res, next) {
       } else {
         console.log(classroom)
         res.render('git/assignments', {
-          classroom: classroom
+          classroom: classroom,
+          user: req.user
         });
       }
     })
   } else {
-    res.send({status: '404, not found'})
+    res.send({
+      status: '404, not found'
+    })
   }
 };
 
 
 /**
- * GET /classroom/:title/new-assignment
- * Main homepage.
+ * GET /classroom/:slug/new-assignment
+ * New Assignment Choice Page.
  */
 exports.newAssignment = function(req, res, next) {
-  var title = req.params.title;
-  if (title) {
+  var slug = req.params.slug.split('_');
+  if (slug[0]) {
     Classroom.findOne({
-      title: title
+      title: slug[0],
+      org_name: slug[1]
     }, function(err, classroom) {
       if (err) {
         req.flash('errors', {
@@ -73,12 +79,77 @@ exports.newAssignment = function(req, res, next) {
       } else {
         console.log(classroom)
         res.render('git/new_assignments', {
-          classroom: classroom
+          classroom: classroom,
+          user: req.user
         });
       }
     })
   } else {
-    res.send({status: '404, not found'})
+    res.send({
+      status: '404, not found'
+    })
+  }
+};
+
+/**
+ * GET /classroom/:slug/group-assignment
+ * New Group assignment Form Page.
+ */
+exports.groupAssignment = function(req, res, next) {
+  var slug = req.params.slug.split('_');
+  if (slug[0]) {
+    Classroom.findOne({
+      title: slug[0],
+      org_name: slug[1]
+    }, function(err, classroom) {
+      if (err) {
+        req.flash('errors', {
+          msg: 'There was a error with the database.'
+        });
+        return res.redirect('/classrooms');
+      } else {
+        res.render('git/create_indi_assignment', {
+          classroom: classroom,
+          user: req.user
+        });
+      }
+    })
+  } else {
+    res.send({
+      status: '404, not found'
+    })
+  }
+};
+
+
+/**
+ * GET /classroom/:title/individual-assignment
+ * New Individual Assignment Form Page.
+ */
+exports.indiAssignment = function(req, res, next) {
+  var slug = req.params.slug.split('_');
+  if (slug[0]) {
+    Classroom.findOne({
+      title: slug[0],
+      org_name: slug[1]
+    }, function(err, classroom) {
+      if (err) {
+        req.flash('errors', {
+          msg: 'There was a error with the database.'
+        });
+        return res.redirect('/classrooms');
+      } else {
+        console.log(classroom)
+        res.render('git/create_indi_assignment', {
+          classroom: classroom,
+          user: req.user
+        });
+      }
+    })
+  } else {
+    res.send({
+      status: '404, not found'
+    })
   }
 };
 
@@ -98,7 +169,8 @@ exports.newClassroom = function(req, res, next) {
       res.send(err);
     } else {
       res.render('git/add_classroom', {
-        organ: organ
+        organ: organ,
+        user: req.user
       });
     }
     console.log(err, organ)
@@ -117,7 +189,8 @@ exports.createClassroom = function(req, res, next) {
     var date = new Date();
     var gid_name = organization.github_id.split(',')
     Classroom.findOne({
-      title: organization.title
+      title: organization.title,
+      org_name: gid_name[1]
     }, function(err, existingClassroom) {
       if (existingClassroom) {
         req.flash('errors', {

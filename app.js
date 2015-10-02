@@ -114,9 +114,11 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 
 app.get('/classrooms', passportConf.isAuthenticated, gitController.getClassrooms);
 app.get('/classrooms/new', passportConf.isAuthenticated, gitController.newClassroom);
-app.get('/classroom/:title', passportConf.isAuthenticated, gitController.showClassroom);
+app.get('/classroom/:slug', passportConf.isAuthenticated, gitController.showClassroom);
 app.post('/classrooms/new', passportConf.isAuthenticated, gitController.createClassroom);
-app.get('/classroom/:title/new-assignment', passportConf.isAuthenticated, gitController.newAssignment);
+app.get('/classroom/:slug/new-assignment', passportConf.isAuthenticated, gitController.newAssignment);
+app.get('/classroom/:slug/group-assignment', passportConf.isAuthenticated, gitController.groupAssignment);
+app.get('/classroom/:slug/individual-assignment', passportConf.isAuthenticated, gitController.indiAssignment);
 
  
 app.get('/auth/github', passport.authenticate('github'));

@@ -1,0 +1,69 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Classroomjs for GitHub</title>
+  <link rel="stylesheet" media="all" href="/css/home.css">
+  <link rel="stylesheet" href="/vendor/bower_components/octicons/octicons/octicons.css">
+</head>
+<body class="site pages home">
+  <main>
+   <%- include ./partials/header.ejs %>
+  <%- include ./partials/gbanner.ejs %>
+    <div class="site-content">
+      <div class="container">
+        
+        <div class="site-content">
+          <div class="site-content-cap">
+            <h2 class="site-content-heading">
+            <span class="assignment-icon assignment-icon-group">
+              <span class="octicon octicon-organization"></span>
+            </span>
+            New group assignment
+            </h2>
+          </div>
+        </div>
+        <div class="site-content-body">
+          <form class="new_group_assignment" id="new_group_assignment" action="/organizations/11042439-demo101/group-assignments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="n028AqqQevneOx7sJCm+KtgVuJgEW6al84PPRpwGU0zysuqorcyZt8PGQavaiHn1iWC+rMnQgnZHoCTeLi9sDw==">
+          
+          <dl class="form">
+            <dt><label for="group_assignment_title">Your assignment</label></dt>
+            <dd><input class="textfield" type="text" name="group_assignment[title]" id="group_assignment_title"></dd>
+          </dl>
+          <dl class="form">
+            <div class="form-checkbox">
+              <label><input type="radio" value="true" checked="checked" name="group_assignment[public_repo]" id="group_assignment_public_repo_true"> Public</label>
+              <span class="mega-octicon octicon-repo"></span>
+              <span class="note">Submit assignments using public repositories. All submissions will be visible to the world.</span>
+            </div>
+            <div class="form-checkbox">
+              <label><input type="radio" value="false" name="group_assignment[public_repo]" id="group_assignment_public_repo_false"> Private</label>
+              <span class="mega-octicon octicon-lock"></span>
+              <span class="note">Submit assignments using private repositories. Submissions will only be visible to the submitter and organization owners.</span>
+            </div>
+          </dl>
+          <dl class="form">
+            <dt><label>Add your starter code from GitHub <small>(optional)</small> </label></dt>
+            <dd><input class="textfield" type="text" name="repo_name" value="" placeholder="e.g. education/classroom" <="" dd="">
+          </dd></dl>
+          <dt><label>Choose an existing group of teams</label></dt>
+          <dl class="form">
+            <dd>
+            <select name="group_assignment[grouping_id]" id="group_assignment_grouping_id"><option value=""></option>
+            <option value="245">Teams formed on September 29th, 2015</option></select>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt><label>OR Create a reusable set of teams</label></dt>
+            <dd><input class="textfield" type="text" value="" placeholder="Teams formed on October 1st, 2015" name="grouping[title]" id="grouping_title"></dd>
+          </dl>
+          <div class="form-actions">
+            <input type="submit" name="commit" value="Create Assignment" class="btn btn-green" id="group_assignment_submit" disabled="disabled">
+            <a class="btn" role="button" href="/organizations/11042439-demo101">Cancel</a>
+          </div>
+        </form></div>
+      </div>
+    </div>
+    </main>
+    
+  </body></html>
