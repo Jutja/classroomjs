@@ -117,8 +117,8 @@ app.get('/classrooms/new', passportConf.isAuthenticated, gitController.newClassr
 app.get('/classroom/:slug', passportConf.isAuthenticated, gitController.showClassroom);
 app.post('/classrooms/new', passportConf.isAuthenticated, gitController.createClassroom);
 app.get('/classroom/:slug/new-assignment', passportConf.isAuthenticated, gitController.newAssignment);
-app.get('/classroom/:slug/group-assignment', passportConf.isAuthenticated, gitController.groupAssignment);
-app.get('/classroom/:slug/individual-assignment', passportConf.isAuthenticated, gitController.indiAssignment);
+app.get('/classroom/:slug/group-assignments/new', passportConf.isAuthenticated, gitController.groupAssignment);
+app.get('/classroom/:slug/assignments/new', passportConf.isAuthenticated, gitController.indiAssignment);
 
  
 app.get('/auth/github', passport.authenticate('github'));

@@ -8,11 +8,11 @@
 </head>
 <body class="site pages home">
   <main>
-  <%- include ./partials/header.ejs %>
-  <%- include ./partials/gbanner.ejs %>
+  <%- include ./../partials/header.ejs %>
+  <%- include ./../partials/gbanner.ejs %>
     <div class="site-content">
       <div class="site-content-cap">
-        <a class="btn btn-green right" role="button" href="/classroom/<%=classroom.title%>/new-assignment">New assignment</a>
+        <a class="btn btn-green right" role="button" href="/classroom/<%=classroom.title%>_<%=classroom.org_name%>/new-assignment">New assignment</a>
         <h2 class="site-content-heading">Assignments</h2>
       </div>
       <div class="site-content-body assignment-list-items">
